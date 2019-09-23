@@ -1,0 +1,6 @@
+server.port=451
+
+qsmpp.host = 127.0.0.1
+qsmpp.port = 1234
+qsmpp.systemId = test
+qsmpp.password = 1234

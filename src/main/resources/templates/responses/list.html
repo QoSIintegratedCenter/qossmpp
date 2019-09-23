@@ -1,0 +1,63 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Request to smsc</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>Request</h1>
+<ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li class="active">Request</li>
+</ol>
+</section>
+<div layout:fragment="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Lists responses</h3>
+           <!-- <div class="box-tools pull-right">
+                <a href="/customers/add" type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i></a>
+                <br clear="all" />
+            </div>-->
+        </div>
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <tr>
+                    <th>Request ID</th>
+                    <th>Connexion size</th>
+                    <th>Command Id</th>
+                    <th>Command Status</th>
+                    <th>Message Id</th>
+                    <th>Result Message</th>
+                    <th>Request Date</th>
+                </tr>
+                <tr th:each="row : ${list}">
+                    <td >
+                        <a  th:text="${row.getRequests().id}"></a>
+                    </td>
+                    <td th:text="${row.connexionSize}"></td>
+                    <td th:text="${row.commandId}"></td>
+                    <td th:text="${row.commandStatus}"></td>
+                    <td th:text="${row.messageId}"></td>
+                    <td th:text="${row.resultMessage}"></td>
+                    <td th:text="${#temporals.format(row.responseDate, 'dd/MMMM/yyyy HH:mm')}"></td>
+                    <!--<td th:text="${row.resquestDate}"></td>-->
+                    <!--<td th:text="${row.charset}"></td>-->
+
+                </tr>
+            </table>
+        </div>
+        <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="/responses?pageNumber=1">First</a></li>
+                <li th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}" th:class="${p == currentIndex} ? 'active' : ''">
+                    <a th:href="${'/responses?pageNumber=' + p}" th:text="${p}"></a>
+                </li>
+                <li><a th:href="${'/responses?pageNumber=' + endIndex}">Last</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

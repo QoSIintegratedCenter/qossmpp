@@ -1,0 +1,50 @@
+server:
+  port: 451
+
+smpp:
+  host: 10.77.62.45
+  ports: 5101
+  users: cp_qos
+  password: Q0S@321
+  charset: GSM
+logging:
+  level: debug
+  file: logs/qossmpp.log
+spring:
+  application:
+    name: Qos smpp
+    jpa:
+  datasource:
+    url: "jdbc:mysql://db.qosic.net:3306/autoremit"
+    username: autoremit
+    password: autoremit
+    driver-class-name: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.jdbc.Driver
+#  datasource:
+#    url: "jdbc:mysql://localhost:3306/autoremit"
+#    username: root
+#    password:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    driverClassName: com.mysql.jdbc.Driver
+
+  #management:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    cache: false
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+#  security:
+#    enabled: false
+#spring:
+#  boot:
+#    admin:
+#      url: http://localhost:8080
+management:
+  security:
+    enabled: false
