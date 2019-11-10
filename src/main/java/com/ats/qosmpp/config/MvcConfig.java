@@ -1,30 +1,22 @@
 package com.ats.qosmpp.config;
 
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.resource.GzipResourceResolver;
-import org.springframework.web.servlet.resource.PathResourceResolver;
-import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 
 
-@Configuration
+//@Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
             "classpath:/META-INF/resources/", "classpath:/resources/",
             "classpath:/static/", "classpath:/public/"};
 
-    @Override
+  /*  @Override
     public void addViewControllers(ViewControllerRegistry registry) {
 //        registry.addViewController("/admin").setViewName("dashboard");
         registry.addViewController("/login").setViewName("login");
     }
-
+*/
     /*public ISpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
         SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.addDialect(new Java8TimeDialect());
@@ -49,10 +41,10 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
                  .addResourceHandler("/resources/**")
                  .addResourceLocations("/resources/");
      }*/
-    @Bean
+ /*   @Bean
     public Java8TimeDialect java8TimeDialect() {
         return new Java8TimeDialect();
-    }
+    }*/
 
 
 }

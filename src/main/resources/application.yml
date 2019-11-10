@@ -10,31 +10,31 @@ smpp:
 logging:
   level: debug
   file: logs/qossmpp.log
+    max-history: 0
+    max-size: 1MB
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 spring:
   application:
     name: Qos smpp
     jpa:
   datasource:
-    url: "jdbc:mysql://db.qosic.net:3306/autoremit"
+    url: "jdbc:mysql://db.qosic.net:3306/autoremit?autoReconnect=true"
     username: autoremit
     password: autoremit
     driver-class-name: com.mysql.jdbc.Driver
     driverClassName: com.mysql.jdbc.Driver
-#  datasource:
-#    url: "jdbc:mysql://localhost:3306/autoremit"
-#    username: root
-#    password:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    driverClassName: com.mysql.jdbc.Driver
+  #  datasource:
+  #    url: "jdbc:mysql://localhost:3306/autoremit?autoReconnect=true"
+  #    username: root
+  #    password: airforceone
+  #    driver-class-name: com.mysql.jdbc.Driver
+  #    driverClassName: com.mysql.jdbc.Driver
 
   #management:
   jpa:
     hibernate:
       ddl-auto: none
-  thymeleaf:
-    prefix: classpath:/templates/
-    check-template-location: true
-    cache: false
   jackson:
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
@@ -45,6 +45,4 @@ spring:
 #  boot:
 #    admin:
 #      url: http://localhost:8080
-management:
-  security:
-    enabled: false
+

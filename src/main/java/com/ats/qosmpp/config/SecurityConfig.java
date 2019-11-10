@@ -26,13 +26,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-            http
-                .authorizeRequests().antMatchers("/bootstrap/**", "/dist/**", "/plugins/**","/admin/**","/request/**","/responses/**","/logfile/download","/fontAwesome/**", "/webjars/**","/t/**").permitAll()
+        http
+                .authorizeRequests().antMatchers("/bootstrap/**", "/dist/**", "/plugins/**", "/admin/**", "/request/**", "/responses/**", "/logfile/download", "/fontAwesome/**", "/webjars/**").permitAll()
+                .and().authorizeRequests()
+                .antMatchers("/api/**")
+                .authenticated()
                 .and()
                 .httpBasic().and()
-                    .authorizeRequests()
-                    .anyRequest()
-                    .authenticated()
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
                 /*authorizeRequests()
                         .antMatchers("/api/**").hasRole("USER")
                         .antMatchers("/admin").hasRole("ADMIN")*/

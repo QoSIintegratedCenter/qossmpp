@@ -1,16 +1,10 @@
 package com.ats.qosmpp;
 
-import com.ats.qosmpp.domain.Requests;
-import com.ats.qosmpp.domain.Responses;
-import com.ats.qosmpp.repository.RequestRepository;
-import com.ats.qosmpp.repository.ResponsesRepository;
-import com.ats.qosmpp.service.OperationServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,23 +14,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.data.jpa.datatables.repository.DataTablesRepositoryFactoryBean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.lang.management.ManagementFactory;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 @SpringBootApplication
 //@EnableAutoConfiguration
 //@EnableConfigurationProperties
-@EnableJpaRepositories(repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class)
-public class QosSmppApplication extends SpringBootServletInitializer implements CommandLineRunner {
+//@EnableJpaRepositories(repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class)
+public class QosSmppApplication extends SpringBootServletInitializer {
     private static final Logger logger = LoggerFactory.getLogger(QosSmppApplication.class);
     private static ApplicationContext applicationContext = null;
     @Autowired
@@ -48,9 +35,11 @@ public class QosSmppApplication extends SpringBootServletInitializer implements 
     @Lazy
     private ResponsesRepository responsesRepository;
     @Autowired*/
+/*
  @Autowired
  @Lazy
     private OperationServices operationServices;
+*/
 
     public static void main(String[] args) {
         String mode = args != null && args.length > 0 ? args[0] : null;
@@ -85,7 +74,7 @@ public class QosSmppApplication extends SpringBootServletInitializer implements 
         return DataSourceBuilder.create().build();
     }
 
-    @Override
+   /* @Override
     public void run(String... strings) throws Exception {
 //        requestRepository.deleteAll();
         List<Requests> requestsList = new ArrayList<>();
@@ -109,11 +98,11 @@ public class QosSmppApplication extends SpringBootServletInitializer implements 
         }
 //        operationServices.saveRequest("test","ten","ddd", "ddd");
 //        requestRepository.save(requestsList);
-     /*   requestRepository.findAll().forEach(requests1 -> {
+     *//*   requestRepository.findAll().forEach(requests1 -> {
             System.out.println(requests1.getFromParam());
             System.out.println(requests1.getResquestDate());
-        });*/
-    }
+        });*//*
+    }*/
 
     @PostConstruct
     public void setUp() {

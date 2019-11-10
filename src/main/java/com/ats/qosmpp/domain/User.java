@@ -3,8 +3,6 @@ package com.ats.qosmpp.domain;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
@@ -43,11 +41,11 @@ public class User {
   /*  @Column(name="state", nullable=false)
     private String state=State.ACTIVE.getState();*/
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    /*@ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
             joinColumns = { @JoinColumn(name = "userId") },
             inverseJoinColumns = { @JoinColumn(name = "roleId") })
-    private Set<Role> roles = new HashSet<Role>();
+    private Set<Role> roles = new HashSet<Role>();*/
 
     @Column(name="termsandcondition")
     private boolean termsandcondition;
@@ -147,14 +145,14 @@ public class User {
         this.state = state;
     }*/
 
-    public Set<Role> getRoles() {
+   /* public Set<Role> getRoles() {
         return roles;
-    }
+    }*/
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
+    /* public void setRoles(Set<Role> roles) {
+         this.roles = roles;
+     }
+ */
     public boolean isTermsandcondition() {
         return termsandcondition;
     }
@@ -215,7 +213,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +
                 ", documentUrl='" + documentUrl + '\'' +
-                ", roles=" + roles +
+
                 ", termsandcondition=" + termsandcondition +
                 ", availableAmount=" + availableAmount +
                 ", lastWeekAvailableAmount=" + lastWeekAvailableAmount +
